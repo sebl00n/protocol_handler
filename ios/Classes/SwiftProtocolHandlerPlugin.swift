@@ -11,7 +11,7 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
         let instance = SwiftProtocolHandlerPlugin()
         instance.channel = channel
         registrar.addMethodCallDelegate(instance, channel: channel)
-        //registrar.addApplicationDelegate(instance)
+        registrar.addApplicationDelegate(instance)
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
