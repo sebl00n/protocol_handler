@@ -28,7 +28,13 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
         let url: Any? = launchOptions[UIApplication.LaunchOptionsKey.url];
         if (url != nil) {
             self._initialUrl = (url as! URL).absoluteString
+            
+            //Handle by Share Extension
+            if url.absoluteString.range(of: "ShareMedia") != nil {
+                return false
+            }
         }
+
         return true
     }
     
@@ -37,6 +43,12 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
             "url": url.absoluteString,
         ]
         channel.invokeMethod("onProtocolUrlReceived", arguments: args, result: nil)
+
+        //Handle by Share Extension
+        if url.absoluteString.range(of: "ShareMedia") != nil {
+            return false
+        }
+
         return true
     }
 }
