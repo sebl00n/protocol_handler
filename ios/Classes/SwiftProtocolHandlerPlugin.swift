@@ -30,7 +30,7 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
             self._initialUrl = (url as! URL).absoluteString
             
             //Handle by Share Extension
-            if url.absoluteString.range(of: "ShareMedia") != nil {
+            if (url as! URL).absoluteString.range(of: "ShareMedia") != nil {
                 return false
             }
         }
