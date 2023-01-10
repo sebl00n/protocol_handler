@@ -31,7 +31,8 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
             
             //Handle by Share Extension
             if (url as! URL).absoluteString.range(of: "ShareMedia") != nil {
-                return false
+                //Must to be true, so the other plugins can receive sharing intent
+                return true
             }
         }
 
